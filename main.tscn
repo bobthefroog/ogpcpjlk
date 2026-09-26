@@ -2,8 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://ceieb84kqd438" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://c0ec7j6n6gtji" path="res://player.gd" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://6we7bvbaucve" path="res://testarea.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D" unique_id=1163750303]
 
 [node name="Player" parent="." unique_id=1219644781 instance=ExtResource("1_0xm2m")]
 script = ExtResource("2_h2yge")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1346942780]
+offset = Vector2(0, -100)
+limit_left = 0
+limit_top = -1500
+limit_right = 0
+limit_bottom = 300
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="testarea" parent="." unique_id=450002822 instance=ExtResource("3_h2yge")]

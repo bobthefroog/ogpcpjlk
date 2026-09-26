@@ -1,14 +1,21 @@
 [gd_scene format=3 uid="uid://ceieb84kqd438"]
 
-[ext_resource type="Texture2D" uid="uid://cjmf7y1u07qik" path="res://icon.svg" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://ph6px2usk8bu" path="res://art/Untitled.png" id="1_4flbx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_msgtk"]
-size = Vector2(128, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2yge"]
+radius = 20.0
+height = 42.666668
 
 [node name="Player" type="CharacterBody2D" unique_id=1219644781]
+scale = Vector2(0.75, 0.75)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=923241675]
+z_index = 1
+position = Vector2(9.333333, -39.999996)
+scale = Vector2(0.069315255, 0.069315255)
 texture = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=421734203]
-shape = SubResource("RectangleShape2D_msgtk")
+position = Vector2(-1.1723955e-13, 44)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_h2yge")
