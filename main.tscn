@@ -10,12 +10,12 @@
 script = ExtResource("2_h2yge")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1346942780]
-offset = Vector2(0, -100)
 limit_left = 0
 limit_top = -1500
 limit_right = 0
-limit_bottom = 300
+limit_bottom = 1000
 limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="testarea" parent="." unique_id=450002822 instance=ExtResource("3_h2yge")]
