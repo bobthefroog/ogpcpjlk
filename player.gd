@@ -1,15 +1,16 @@
 extends CharacterBody2D
 
-var speed = 600
-var maxspeed = 600
+var speed = 2
+var maxspeed = 300
 
 func _process(delta: float) -> void:
-	var dir = Vector2(Input.get_axis("left", "right"),Input.get_axis("up", "down"))
+	var dir = Vector2(Input.get_axis("left", "right"),Input.get_axis("up", "down")).normalized()
 	
-	if dir and velocity.x < maxspeed and velocity.x > (-1 * maxspeed) and velocity.y < maxspeed and velocity.y > (-1 * maxspeed):
-		velocity += dir * speed / 100
-	else:
-		velocity /= 1.005
+	velocity += dir*speed
+	velocity /= 1.005
+	
+	#var target = dir*maxspeed
+	#velocity = velocity.move_toward(target, speed)
 	
 	move_and_slide()
 	
