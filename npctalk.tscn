@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dapghmd2fnxlt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wca5u"]
+font_size = 32
+
+[node name="npctalk" type="Node2D" unique_id=1109226562]
+
+[node name="Label" type="Label" parent="." unique_id=1135763388]
+offset_top = -292.0
+offset_right = 260.0
+text = "dghruid rdgrdgrd grdg rdgg rgrdgg yj zcxz cdfff"
+label_settings = SubResource("LabelSettings_wca5u")
+vertical_alignment = 2
+autowrap_mode = 2

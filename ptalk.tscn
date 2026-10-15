@@ -6,7 +6,7 @@ font_size = 32
 [node name="Ptalk" type="Node2D" unique_id=1043364333]
 
 [node name="Label" type="Label" parent="." unique_id=824755128]
-offset_top = -189.0
+offset_top = -318.0
 offset_right = 260.0
 text = "
 "
