@@ -1,16 +1,12 @@
 extends CharacterBody2D
 
-var speed = 50
-var maxspeed = 300
+var speed = 3000
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var dir = Vector2(Input.get_axis("left", "right"),Input.get_axis("up", "down")).normalized()
 	
-	velocity += dir*speed
-	velocity /= 1.1
-	
-	#var target = dir*maxspeed
-	#velocity = velocity.move_toward(target, speed)
+	velocity += dir * speed * delta
+	velocity /= 1.15
 	
 	move_and_slide()
 	
