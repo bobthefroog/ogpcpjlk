@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjmf7y1u07qik" path="res://icon.svg" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dapghmd2fnxlt" path="res://npctalk.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://1f15eosmrv3s" path="res://npctalk.gd" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://b1mrf1b1mxsn6" path="res://camera.gd" id="9_kek77"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_msgtk"]
 radius = 144.36066
@@ -16,16 +17,6 @@ radius = 144.36066
 
 [node name="Player" parent="." unique_id=1219644781 instance=ExtResource("1_0xm2m")]
 script = ExtResource("2_h2yge")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1346942780]
-zoom = Vector2(1.5, 1.5)
-limit_left = -500
-limit_top = -1500
-limit_right = 500
-limit_bottom = 1000
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
 
 [node name="Ptalk" parent="Player" unique_id=1043364333 instance=ExtResource("3_1bvp3")]
 z_index = 10
@@ -55,6 +46,25 @@ one_shot = true
 [node name="talkspeed" type="Timer" parent="." unique_id=1925475139]
 wait_time = 0.05
 one_shot = true
+
+[node name="Camera" type="Node2D" parent="." unique_id=483647295]
+script = ExtResource("9_kek77")
+
+[node name="Camera2D" type="Camera2D" parent="Camera" unique_id=1346942780]
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_top = -1500
+limit_right = 500
+limit_bottom = 1000
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera" unique_id=1053268123]
+visible = false
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_7mycd")
 
 [connection signal="body_entered" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_entered"]
 [connection signal="body_exited" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_exited"]

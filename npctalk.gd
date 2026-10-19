@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Global.iconv == 1:
+		Global.npcpos = get_parent().position
 		if speak != ospeak:
 			talk = 0
 			$Label.text = ""

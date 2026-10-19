@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c0gb1ipk46sva"]
+
+[ext_resource type="PackedScene" uid="uid://ceieb84kqd438" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://c0ec7j6n6gtji" path="res://player.gd" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dqu1fgmwtpdxr" path="res://ptalk.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://6we7bvbaucve" path="res://testarea.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://do3g7wsdcb0jo" path="res://ptalk.gd" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cjmf7y1u07qik" path="res://icon.svg" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dapghmd2fnxlt" path="res://npctalk.tscn" id="7_272bh"]
+[ext_resource type="Script" uid="uid://1f15eosmrv3s" path="res://npctalk.gd" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://b1mrf1b1mxsn6" path="res://camera.gd" id="9_kek77"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_msgtk"]
+radius = 144.36066
+
+[node name="Main" type="Node2D" unique_id=1163750303]
+
+[node name="Player" parent="." unique_id=1219644781 instance=ExtResource("1_0xm2m")]
+script = ExtResource("2_h2yge")
+
+[node name="Ptalk" parent="Player" unique_id=1043364333 instance=ExtResource("3_1bvp3")]
+z_index = 10
+position = Vector2(0, -86)
+script = ExtResource("4_lquwl")
+
+[node name="testarea" parent="." unique_id=450002822 instance=ExtResource("3_h2yge")]
+
+[node name="conv1" type="Area2D" parent="." unique_id=1059738396]
+position = Vector2(251, 52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="conv1" unique_id=1143368669]
+shape = SubResource("CircleShape2D_msgtk")
+
+[node name="Sprite2D" type="Sprite2D" parent="conv1" unique_id=325052318]
+position = Vector2(-1.1920929e-07, -1.9073486e-06)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("6_7mycd")
+
+[node name="npctalk" parent="conv1" unique_id=1109226562 instance=ExtResource("7_272bh")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("8_5vw27")
+
+[node name="talktimer" type="Timer" parent="." unique_id=2017064057]
+one_shot = true
+
+[node name="talkspeed" type="Timer" parent="." unique_id=1925475139]
+wait_time = 0.05
+one_shot = true
+
+[node name="Camera" type="Node2D" parent="." unique_id=483647295]
+script = ExtResource("9_kek77")
+
+[node name="Camera2D" type="Camera2D" parent="Camera" unique_id=1346942780]
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_top = -1500
+limit_right = 500
+limit_bottom = 1000
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[connection signal="body_entered" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_entered"]
+[connection signal="body_exited" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_exited"]
+[connection signal="timeout" from="talktimer" to="conv1/npctalk" method="_on_talktimer_timeout"]
