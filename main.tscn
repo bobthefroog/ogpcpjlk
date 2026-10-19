@@ -29,7 +29,7 @@ position_smoothing_speed = 8.0
 
 [node name="Ptalk" parent="Player" unique_id=1043364333 instance=ExtResource("3_1bvp3")]
 z_index = 10
-position = Vector2(0, -76)
+position = Vector2(0, -86)
 script = ExtResource("4_lquwl")
 
 [node name="testarea" parent="." unique_id=450002822 instance=ExtResource("3_h2yge")]
@@ -50,6 +50,10 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("8_5vw27")
 
 [node name="talktimer" type="Timer" parent="." unique_id=2017064057]
+one_shot = true
+
+[node name="talkspeed" type="Timer" parent="." unique_id=1925475139]
+wait_time = 0.05
 one_shot = true
 
 [connection signal="body_entered" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_entered"]

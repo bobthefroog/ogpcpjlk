@@ -1,14 +1,31 @@
 [gd_scene format=3 uid="uid://dapghmd2fnxlt"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_wca5u"]
-font_size = 32
+[ext_resource type="Texture2D" uid="uid://btg7kfnyq50cy" path="res://art/bubble.png" id="1_0xhcb"]
+[ext_resource type="Script" uid="uid://cmowuut8vstyk" path="res://bubble.gd" id="2_ysmtm"]
+[ext_resource type="FontFile" uid="uid://bltalkot5skku" path="res://art/font.TTF" id="3_ysmtm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hd6x4"]
+font = ExtResource("3_ysmtm")
+font_size = 40
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
 [node name="npctalk" type="Node2D" unique_id=1109226562]
 
-[node name="Label" type="Label" parent="." unique_id=1135763388]
-offset_top = -292.0
-offset_right = 260.0
-text = "dghruid rdgrdgrd grdg rdgg rgrdgg yj zcxz cdfff"
-label_settings = SubResource("LabelSettings_wca5u")
+[node name="bubble" type="Sprite2D" parent="." unique_id=888734907]
+visible = false
+position = Vector2(69, -69)
+scale = Vector2(0.276, 0.276)
+texture = ExtResource("1_0xhcb")
+script = ExtResource("2_ysmtm")
+
+[node name="Label" type="Label" parent="." unique_id=746401017]
+offset_left = 8.0
+offset_top = -410.0
+offset_right = 323.0
+offset_bottom = -8.0
+text = "
+"
+label_settings = SubResource("LabelSettings_hd6x4")
 vertical_alignment = 2
 autowrap_mode = 2
