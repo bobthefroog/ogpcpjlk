@@ -10,9 +10,9 @@ var speed = 5.0
 func _process(delta: float) -> void:
 	if Global.iconv:
 		position = get_parent().get_node("Player").position.lerp(Global.npcpos, 0.5)
-		$Camera2D.zoom = $Camera2D.zoom.lerp(talkzoom, speed)
+		$Camera2D.zoom = $Camera2D.zoom.lerp(talkzoom, speed*delta)
 	else:
-		speed = 0.1
+		speed = 3
 		position = get_parent().get_node("Player").position
 		$Camera2D.zoom = genzoom
 
