@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dewirdi7tv30d" path="res://art/animation test/up.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://dsifmfkf8u0lj" path="res://art/tilemapcontrast.png" id="14_vivmo"]
 [ext_resource type="Texture2D" uid="uid://cjr7ja1stdgus" path="res://art/houses/housetile.png" id="15_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://6we7bvbaucve" path="res://testarea.tscn" id="16_2cqfq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8lruo"]
 animations = [{
@@ -126,7 +127,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="." unique_id=1219644781 instance=ExtResource("1_0xm2m")]
 y_sort_enabled = true
-position = Vector2(39, -25)
+position = Vector2(-175, 156)
 script = ExtResource("2_h2yge")
 
 [node name="Ptalk" parent="Player" unique_id=1043364333 instance=ExtResource("3_1bvp3")]
@@ -135,11 +136,11 @@ position = Vector2(0, -86)
 script = ExtResource("4_lquwl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=633370327]
-z_index = 1
-y_sort_enabled = true
+position = Vector2(-9.536743e-07, 0)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_8lruo")
 animation = &"idle"
+offset = Vector2(100, -1319.9996)
 
 [node name="conv1" type="Area2D" parent="." unique_id=1059738396]
 position = Vector2(251, 52)
@@ -183,13 +184,14 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_7mycd")
 
 [node name="TileMap" type="Node2D" parent="." unique_id=419834570]
-y_sort_enabled = true
+visible = false
 scale = Vector2(0.5, 0.5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap" unique_id=1102658995]
-y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD8/wAAAQAAAAEAAAD+/wAAAQACAAEAAAD9/wAAAQABAAEAAAD8////AQAAAAIAAAD+////AQACAAIAAAD9////AQABAAIAAAA=")
 tile_set = SubResource("TileSet_msgtk")
+
+[node name="testarea" parent="." unique_id=450002822 instance=ExtResource("16_2cqfq")]
 
 [connection signal="body_entered" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_entered"]
 [connection signal="body_exited" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_exited"]
