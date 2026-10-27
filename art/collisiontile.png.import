@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ph6px2usk8bu"
-path="res://.godot/imported/Untitled.png-31e8243e4ee38e92901b3a1ec68b938f.ctex"
+uid="uid://byasmhcej87tj"
+path="res://.godot/imported/collisiontile.png-8561b0140929bdac5482c1ca54359694.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Untitled.png"
-dest_files=["res://.godot/imported/Untitled.png-31e8243e4ee38e92901b3a1ec68b938f.ctex"]
+source_file="res://art/collisiontile.png"
+dest_files=["res://.godot/imported/collisiontile.png-8561b0140929bdac5482c1ca54359694.ctex"]
 
 [params]
 

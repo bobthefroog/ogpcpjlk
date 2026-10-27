@@ -4,61 +4,13 @@
 [ext_resource type="Script" uid="uid://c0ec7j6n6gtji" path="res://player.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dqu1fgmwtpdxr" path="res://ptalk.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://do3g7wsdcb0jo" path="res://ptalk.gd" id="4_lquwl"]
-[ext_resource type="Texture2D" uid="uid://ph6px2usk8bu" path="res://art/Untitled.png" id="5_efxa6"]
 [ext_resource type="Texture2D" uid="uid://cjmf7y1u07qik" path="res://icon.svg" id="6_7mycd"]
-[ext_resource type="Texture2D" uid="uid://s565dv4d5liu" path="res://art/animation test/down.png" id="6_w48qg"]
 [ext_resource type="PackedScene" uid="uid://dapghmd2fnxlt" path="res://npctalk.tscn" id="7_272bh"]
-[ext_resource type="Texture2D" uid="uid://dy325cb0h70pd" path="res://art/animation test/left.png" id="7_vivmo"]
-[ext_resource type="Texture2D" uid="uid://djqo8vmgsdpgh" path="res://art/animation test/right.png" id="8_2cqfq"]
 [ext_resource type="Script" uid="uid://1f15eosmrv3s" path="res://npctalk.gd" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://b1mrf1b1mxsn6" path="res://camera.gd" id="9_kek77"]
-[ext_resource type="Texture2D" uid="uid://dewirdi7tv30d" path="res://art/animation test/up.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://dsifmfkf8u0lj" path="res://art/tilemapcontrast.png" id="14_vivmo"]
 [ext_resource type="Texture2D" uid="uid://cjr7ja1stdgus" path="res://art/houses/housetile.png" id="15_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://6we7bvbaucve" path="res://testarea.tscn" id="16_2cqfq"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8lruo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_efxa6")
-}],
-"loop": 1,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_w48qg")
-}],
-"loop": 1,
-"name": &"walk_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_vivmo")
-}],
-"loop": 1,
-"name": &"walk_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_2cqfq")
-}],
-"loop": 1,
-"name": &"walk_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_yaehf")
-}],
-"loop": 1,
-"name": &"walk_up",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_msgtk"]
 radius = 144.36066
@@ -134,13 +86,6 @@ script = ExtResource("2_h2yge")
 z_index = 10
 position = Vector2(0, -86)
 script = ExtResource("4_lquwl")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=633370327]
-position = Vector2(-9.536743e-07, 0)
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_8lruo")
-animation = &"idle"
-offset = Vector2(100, -1319.9996)
 
 [node name="conv1" type="Area2D" parent="." unique_id=1059738396]
 position = Vector2(251, 52)

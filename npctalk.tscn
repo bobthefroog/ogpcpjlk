@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dapghmd2fnxlt"]
 
-[ext_resource type="Texture2D" uid="uid://btg7kfnyq50cy" path="res://art/bubble.png" id="1_0xhcb"]
+[ext_resource type="Texture2D" uid="uid://btg7kfnyq50cy" path="res://art/speachbubble.png" id="1_0xhcb"]
 [ext_resource type="Script" uid="uid://cmowuut8vstyk" path="res://bubble.gd" id="2_ysmtm"]
 [ext_resource type="FontFile" uid="uid://bltalkot5skku" path="res://art/font.TTF" id="3_ysmtm"]
 

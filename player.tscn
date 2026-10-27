@@ -1,8 +1,56 @@
 [gd_scene format=3 uid="uid://ceieb84kqd438"]
 
+[ext_resource type="Texture2D" uid="uid://s565dv4d5liu" path="res://art/animation test/down.png" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://dy325cb0h70pd" path="res://art/animation test/left.png" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://djqo8vmgsdpgh" path="res://art/animation test/right.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://dewirdi7tv30d" path="res://art/animation test/up.png" id="5_b26j0"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2yge"]
 radius = 20.0
 height = 42.666668
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7ghd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}],
+"loop": 1,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1jxqw")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=1219644781]
 visibility_layer = 3
@@ -12,5 +60,11 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=421734203]
 position = Vector2(-1.10134124e-13, 0)
-rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_h2yge")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=664571721]
+position = Vector2(9.536743e-07, -1.5258789e-05)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_n7ghd")
+animation = &"idle"
+offset = Vector2(0, 0.00036621094)
