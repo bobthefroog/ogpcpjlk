@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://c0gb1ipk46sva"]
+[gd_scene format=3 uid="uid://c0gb1ipk46sva"]
 
 [ext_resource type="PackedScene" uid="uid://ceieb84kqd438" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://c0ec7j6n6gtji" path="res://player.gd" id="2_h2yge"]
@@ -8,77 +8,35 @@
 [ext_resource type="PackedScene" uid="uid://dapghmd2fnxlt" path="res://npctalk.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://1f15eosmrv3s" path="res://npctalk.gd" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://b1mrf1b1mxsn6" path="res://camera.gd" id="9_kek77"]
-[ext_resource type="Texture2D" uid="uid://dsifmfkf8u0lj" path="res://art/tilemapcontrast.png" id="14_vivmo"]
-[ext_resource type="Texture2D" uid="uid://cjr7ja1stdgus" path="res://art/houses/housetile.png" id="15_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://6we7bvbaucve" path="res://testarea.tscn" id="16_2cqfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_msgtk"]
 radius = 144.36066
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaehf"]
-texture = ExtResource("14_vivmo")
-texture_region_size = Vector2i(100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_074og"]
-texture = ExtResource("15_2cqfq")
-texture_region_size = Vector2i(100, 100)
-2:2/0 = 0
-1:2/0 = 0
-0:2/0 = 0
-0:2/0/y_sort_origin = 1
-0:1/0 = 0
-1:0/0 = 0
-2:1/0 = 0
-1:1/0 = 0
-0:0/0 = 0
-2:0/0 = 0
-3:6/0 = 0
-2:6/0 = 0
-1:6/0 = 0
-0:6/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-5:6/0 = 0
-4:6/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-5:4/0 = 0
-4:4/0 = 0
-4:3/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-5:3/0 = 0
-11:3/0 = 0
-10:3/0 = 0
-9:3/0 = 0
-8:3/0 = 0
-7:3/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-11:2/0 = 0
-11:1/0 = 0
-10:1/0 = 0
-9:1/0 = 0
-8:1/0 = 0
-7:1/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_msgtk"]
-tile_size = Vector2i(100, 100)
-sources/0 = SubResource("TileSetAtlasSource_yaehf")
-sources/1 = SubResource("TileSetAtlasSource_074og")
-
 [node name="Main" type="Node2D" unique_id=1163750303]
-y_sort_enabled = true
+
+[node name="testarea" parent="." unique_id=450002822 instance=ExtResource("16_2cqfq")]
+
+[node name="Camera" type="Node2D" parent="." unique_id=483647295]
+script = ExtResource("9_kek77")
+
+[node name="Camera2D" type="Camera2D" parent="Camera" unique_id=1346942780]
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_top = -1500
+limit_right = 500
+limit_bottom = 1000
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera" unique_id=1053268123]
+visible = false
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_7mycd")
 
 [node name="Player" parent="." unique_id=1219644781 instance=ExtResource("1_0xm2m")]
-y_sort_enabled = true
 position = Vector2(-175, 156)
 script = ExtResource("2_h2yge")
 
@@ -102,6 +60,21 @@ texture = ExtResource("6_7mycd")
 scale = Vector2(0.5, 0.5)
 script = ExtResource("8_5vw27")
 
+[node name="conv2" type="Area2D" parent="." unique_id=1956087936]
+position = Vector2(-96, -286)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="conv2" unique_id=1498769736]
+shape = SubResource("CircleShape2D_msgtk")
+
+[node name="Sprite2D" type="Sprite2D" parent="conv2" unique_id=722167726]
+position = Vector2(-1.1920929e-07, -1.9073486e-06)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("6_7mycd")
+
+[node name="npctalk" parent="conv2" unique_id=825368956 instance=ExtResource("7_272bh")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("8_5vw27")
+
 [node name="talktimer" type="Timer" parent="." unique_id=2017064057]
 one_shot = true
 
@@ -109,35 +82,8 @@ one_shot = true
 wait_time = 0.05
 one_shot = true
 
-[node name="Camera" type="Node2D" parent="." unique_id=483647295]
-script = ExtResource("9_kek77")
-
-[node name="Camera2D" type="Camera2D" parent="Camera" unique_id=1346942780]
-scale = Vector2(0.5, 0.5)
-zoom = Vector2(1.5, 1.5)
-limit_left = -500
-limit_top = -1500
-limit_right = 500
-limit_bottom = 1000
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Camera" unique_id=1053268123]
-visible = false
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("6_7mycd")
-
-[node name="TileMap" type="Node2D" parent="." unique_id=419834570]
-visible = false
-scale = Vector2(0.5, 0.5)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="TileMap" unique_id=1102658995]
-tile_map_data = PackedByteArray("AAD8/wAAAQAAAAEAAAD+/wAAAQACAAEAAAD9/wAAAQABAAEAAAD8////AQAAAAIAAAD+////AQACAAIAAAD9////AQABAAIAAAA=")
-tile_set = SubResource("TileSet_msgtk")
-
-[node name="testarea" parent="." unique_id=450002822 instance=ExtResource("16_2cqfq")]
-
 [connection signal="body_entered" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_entered"]
 [connection signal="body_exited" from="conv1" to="conv1/npctalk" method="_on_conv_1_body_exited"]
+[connection signal="body_entered" from="conv2" to="conv2/npctalk" method="_on_conv_2_body_entered"]
+[connection signal="body_exited" from="conv2" to="conv2/npctalk" method="_on_conv_2_body_exited"]
 [connection signal="timeout" from="talktimer" to="conv1/npctalk" method="_on_talktimer_timeout"]
