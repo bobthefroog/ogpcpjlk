@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.iconv == 1:
 		if Global.cn != "conv0":
-			Global.npcpos = get_parent().get_parent().get_node(Global.cn).position
+			print (Global.npcpos)
 			if speak != ospeak:
 				talk = 0
 				$Label.text = ""

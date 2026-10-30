@@ -1,5 +1,8 @@
 extends Node2D
 
+var r = "conv"
+var q = Global.cn
+
 var speak = 0
 var conv0 = [""]
 var conv1 = ["hello", "wassup", "dxgfhnz"]
@@ -16,6 +19,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	cn()
 	if Global.iconv == 1:
 		if speak != ospeak:
 			talk = 0
@@ -47,4 +51,9 @@ func talking():
 		Global.pdone = true
 		Global.pldone.emit()
 
-#make a new func to make it so ex: global cn = conv1 then player current = conv1 and so on
+func cn():
+	q = Global.cn
+	if q == r +"1":
+		current = conv1
+	elif q == r +"2":
+		current = conv2
