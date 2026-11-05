@@ -19,13 +19,24 @@ scale = Vector2(0.276, 0.276)
 texture = ExtResource("1_0xhcb")
 script = ExtResource("2_ysmtm")
 
-[node name="Label" type="Label" parent="." unique_id=746401017]
+[node name="words" type="Label" parent="." unique_id=746401017]
 offset_left = 8.0
 offset_top = -410.0
 offset_right = 323.0
 offset_bottom = -8.0
 text = "
 "
+label_settings = SubResource("LabelSettings_hd6x4")
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="talk" type="Label" parent="." unique_id=832464772]
+visible = false
+offset_left = 8.0
+offset_top = -63.0
+offset_right = 323.0
+offset_bottom = -8.0
+text = "[E] Talk"
 label_settings = SubResource("LabelSettings_hd6x4")
 vertical_alignment = 2
 autowrap_mode = 2
