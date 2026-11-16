@@ -1,7 +1,7 @@
 extends Sprite2D
 
 func _process(delta: float) -> void:
-	if Global.iconv:
+	if Global.inconv:
 		visible = true
 	else:
 		visible = false

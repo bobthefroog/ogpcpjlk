@@ -1,83 +1,76 @@
 extends Node2D
 
-var talkingrn = false
-var talk = 0
-var speak = 0
-var conv0 = [""]
-var ospeak = -1
-var done = false
 @onready var timer = get_parent().get_parent().get_node("talktimer")
 @onready var speedt = get_parent().get_parent().get_node("talkspeed")
+@onready var words = $words
 
-#dialogue
-var conv1 = ["hiiiiiiiiiiiiiii", "yup", "edwyzytwdt"]
-var conv2 = ["1", "2", "3"]
+@export var npcconv = ["","",""]
+@export var pconv = ["","",""]
 
+var pwords = null
+
+var sent = 0
+var talk = 0
+var done = true
+var npcdone = true
+var pdone = true
 
 func _ready() -> void:
-	$words.text = ""
-	speak = 0
+	pwords = Global.pwords
+	words.text = ""
+	pwords.text = ""
 
 func _process(delta: float) -> void:
-	#print(Global.npcdone)
 	if get_parent().has_overlapping_bodies():
-		if Global.iconv != 1:
-			get_node("talk").visible = true
-			if Input.is_action_just_pressed("Talk"):
-				get_node("talk").visible = false
-				Global.iconv = 1
+		Global.npcpos = get_parent().position
+		if Input.is_action_just_pressed("Talk") and done == true and npcdone == true and pdone == true:
+			Global.inconv = get_parent().name
+			if sent < len(npcconv):
+				ptalk()
+			else:
+				sent = 0
+				words.visible = false
+				if Global.inconv == get_parent().name:
+					Global.inconv = ""
+					pwords.visible = false
+					wait()
 	else:
-		get_node("talk").visible = false
-	if Global.iconv == 1:
-		if Global.cn != "conv0":
-			if speak != ospeak:
-				if Global.npcdone == true and Global.pdone == true: #-----------------
-					ospeak = speak
-					Global.npcdone = false
-					talking()
-					print("awdsa")
-			if Input.is_action_just_pressed("Talk") and Global.pdone == true and Global.npcdone == true:
-				if speak < (len(Global.current)-1):
-					$words.text = ""
-					pdone()
-				else:
-					$words.text = ""
-					speak = 0
-					Global.iconv = 0
-					ospeak = -1
-	else:
-		$words.text = ""
-		speak = 0
-		ospeak = -1
-	#print(talkingrn)
+		sent = 0
+		words.visible = false
+		if Global.inconv == get_parent().name:
+			Global.inconv = ""
+			pwords.visible = false
 
-func talking():
+func ptalk():
+	pdone = false
 	talk = 0
-	for item in len(Global.current[speak]):
-		if talk < (len(Global.current[speak])):
-			$words.text += Global.current[speak][talk]
-			talk += 1
-			speedt.start()
-			await speedt.timeout
-	Global.npcdone = true
+	words.text = ""
+	pwords.text = ""
+	pwords.visible = true
+	for item in len(pconv[sent]):
+		if talk < (len(pconv[sent])):
+			pwords.text += pconv[sent][talk]
+		talk += 1
+		speedt.start()
+		await speedt.timeout
+	pdone = true
+	npctalk()
 
-func pdone():
-	await Global.pldone
-	speak += 1 
+func npctalk():
+	npcdone = false
+	talk = 0
+	words.visible = true
+	for item in len(npcconv[sent]):
+		if talk < (len(npcconv[sent])):
+			words.text += npcconv[sent][talk]
+		talk += 1
+		speedt.start()
+		await speedt.timeout
+	sent += 1
+	npcdone = true
 
-func _on_conv_1_body_entered(_body: Node2D) -> void:
-	Global.current = conv1
-	Global.cn = "conv1"
-func _on_conv_1_body_exited(_body: Node2D) -> void:
-	Global.iconv = 0
-	Global.current = conv0
-	Global.cn = "conv0"
-
-
-func _on_conv_2_body_entered(_body: Node2D) -> void:
-	Global.current = conv2
-	Global.cn = "conv2"
-func _on_conv_2_body_exited(_body: Node2D) -> void:
-	Global.iconv = 0
-	Global.current = conv0
-	Global.cn = "conv0"
+func wait():
+	done = false
+	timer.start()
+	await timer.timeout
+	done = true
