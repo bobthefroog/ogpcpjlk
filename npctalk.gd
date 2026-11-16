@@ -1,20 +1,25 @@
 extends Node2D
 
+var talkingrn = false
 var talk = 0
 var speak = 0
 var conv0 = [""]
-var conv1 = ["hi", "yup", "edwyzytwdt"]
-var conv2 = ["1", "2", "3"]
 var ospeak = -1
 var done = false
 @onready var timer = get_parent().get_parent().get_node("talktimer")
 @onready var speedt = get_parent().get_parent().get_node("talkspeed")
+
+#dialogue
+var conv1 = ["hiiiiiiiiiiiiiii", "yup", "edwyzytwdt"]
+var conv2 = ["1", "2", "3"]
+
 
 func _ready() -> void:
 	$words.text = ""
 	speak = 0
 
 func _process(delta: float) -> void:
+	#print(Global.npcdone)
 	if get_parent().has_overlapping_bodies():
 		if Global.iconv != 1:
 			get_node("talk").visible = true
@@ -26,13 +31,12 @@ func _process(delta: float) -> void:
 	if Global.iconv == 1:
 		if Global.cn != "conv0":
 			if speak != ospeak:
-				talk = 0
-				$words.text = ""
-				if done == true and Global.pdone == true:
-					done = false
-					talking()
+				if Global.npcdone == true and Global.pdone == true: #-----------------
 					ospeak = speak
-			if Input.is_action_just_pressed("Talk") and Global.pdone == true and done == true:
+					Global.npcdone = false
+					talking()
+					print("awdsa")
+			if Input.is_action_just_pressed("Talk") and Global.pdone == true and Global.npcdone == true:
 				if speak < (len(Global.current)-1):
 					$words.text = ""
 					pdone()
@@ -45,17 +49,17 @@ func _process(delta: float) -> void:
 		$words.text = ""
 		speak = 0
 		ospeak = -1
-		done = true
+	#print(talkingrn)
 
 func talking():
 	talk = 0
 	for item in len(Global.current[speak]):
 		if talk < (len(Global.current[speak])):
 			$words.text += Global.current[speak][talk]
-		talk += 1
-		speedt.start()
-		await speedt.timeout
-	done = true
+			talk += 1
+			speedt.start()
+			await speedt.timeout
+	Global.npcdone = true
 
 func pdone():
 	await Global.pldone

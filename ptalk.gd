@@ -5,7 +5,7 @@ var q = Global.cn
 
 var speak = 0
 var conv0 = [""]
-var conv1 = ["hello", "wassup", "dxgfhnz"]
+var conv1 = ["helloeeeeeeeeeeeeeeee", "wassup", "dxgfhnz"]
 var conv2 = ["4", "5", "6"]
 var talk = 0
 var ospeak = -1
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 				Global.pdone = false
 				talking()
 		ospeak = speak
-		if Input.is_action_just_pressed("TalkNext") and Global.pdone == true:
+		if Input.is_action_just_pressed("TalkNext") and Global.pdone == true and Global.npcdone == true:
 			if speak < (len(current)-1):
 				speak += 1
 			else:

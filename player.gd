@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	animation_update()
 	direction_update(dir)
+	Global.vel = velocity
 
 func direction_update(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
@@ -35,7 +36,7 @@ func direction_update(dir: Vector2) -> void:
 
 
 func animation_update() -> void:
-	if velocity.length() < 10:
+	if velocity.length() < 80:
 		animated_sprite.play("idle")
 	else:
 		animated_sprite.play("walk" + current_dir)

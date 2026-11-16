@@ -1,7 +1,9 @@
 extends Node
 
+var vel = null
 var conv0 = [""]
 var iconv = 0
+var npcdone = true
 var pdone = true
 var npcpos = Vector2(0,0)
 var current = conv0
