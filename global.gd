@@ -2,21 +2,11 @@ extends Node
 
 var inconv = ""
 var pwords = null
-
 var vel = null
-var conv0 = [""]
-var npcdone = true
-var pdone = true
-var npcpos = Vector2(0,0)
-var current = conv0
-var cn = "conv1"
-signal pldone
+var npcpos = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

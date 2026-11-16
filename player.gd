@@ -25,13 +25,10 @@ func direction_update(dir: Vector2) -> void:
 		else:
 			current_dir = "_up"
 	else:
-		#animated_sprite.flip_h = false
 		if dir.x > 0:
 			current_dir = "_right"
-			#animated_sprite.flip_h = false
 		else:
 			current_dir = "_left"
-			#animated_sprite.flip_h = true
 	
 
 

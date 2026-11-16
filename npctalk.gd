@@ -22,6 +22,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if get_parent().has_overlapping_bodies():
+		if Global.inconv:
+			$talk.visible = false
+		else:
+			$talk.visible = true
 		Global.npcpos = get_parent().position
 		if Input.is_action_just_pressed("Talk") and done == true and npcdone == true and pdone == true:
 			Global.inconv = get_parent().name
@@ -35,6 +39,7 @@ func _process(delta: float) -> void:
 					pwords.visible = false
 					wait()
 	else:
+		$talk.visible = false
 		sent = 0
 		words.visible = false
 		if Global.inconv == get_parent().name:
